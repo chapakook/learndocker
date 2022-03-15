@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  mymariadb:
+    container_name: mymariadb
+    build:
+      context: .
+      dockerfile: ../../dockerfiles/DockerFile
+    ports:
+      - 3306:3306
