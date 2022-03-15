@@ -14,19 +14,19 @@ CONTAINER_NAME=mymariadb
 SQL_PATH=/etc/mysql/setDB/setDB.sql
 ROOT=root
 
-echo $BOLD"[REMOVE] Container '$CONTAINER_NAME'"$WHITE
-docker rm -f $CONTAINER_NAME
+echo ${BOLD}"[REMOVE] Container '${CONTAINER_NAME}'"$WHITE
+docker rm -f ${CONTAINER_NAME}
 docker rmi ${DIR_NAME}_${CONTAINER_NAME}
 {
-    echo $BOLD"[RUN] Container '$CONTAINER_NAME'"$WHITE &&
+    echo ${BOLD}"[RUN] Container '${CONTAINER_NAME}'"${WHITE} &&
     docker-compose -f ../docker/mariadb/docker-compose.yaml up -d &&
     echo "Waiting Up Container Up \c" &&
-    for((i=0;i<5;i++)); do echo ".\c"; sleep 1;done &&
-    echo $GREEN" done"$WHITE &&
-    echo $BOLD"[RUN] Set Database" &&
-    echo "$BLUE\c"
-    docker exec $CONTAINER_NAME sh -c "mysql -u $ROOT -p$ROOT < $SQL_PATH" &&
-    echo $GREEN"Done!!!"$WHITE
+    for((i=0;i<5;i++)); do echo ".\c"; sleep 1; done &&
+    echo ${GREEN}" done"${WHITE} &&
+    echo ${BOLD}"[RUN] Set Database" &&
+    echo "${BLUE}\c"
+    docker exec $CONTAINER_NAME sh -c "mysql -u ${ROOT} -p${ROOT} < ${SQL_PATH}" &&
+    echo ${GREEN}"Done!!!"$WHITE
 } ||{
-    echo $RED$BOLD"!!! [ERROR] - CHEKC ERROR MESSAGE !!!"$WHITE
+    echo ${RED}${BOLD}"!!! [ERROR] - CHEKC ERROR MESSAGE !!!"${WHITE}
 }
