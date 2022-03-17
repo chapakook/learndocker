@@ -24,7 +24,7 @@ docker rmi ${DIR_NAME}_${CONTAINER_NAME}
     for((i=0;i<5;i++)); do echo ".\c"; sleep 1; done &&
     echo ${GREEN}" done"${WHITE} &&
     echo ${BOLD}"[RUN] Set Database" &&
-    echo "${BLUE}\c" &&
+    echo "${WHITE}\c" &&
     docker exec $CONTAINER_NAME sh -c "mysql -u ${ROOT} -p${ROOT} < ${SQL_PATH}" &&
     for((i=0;i<5;i++)); do echo ".\c"; sleep 0.25; done &&
     echo ${GREEN}" done"${WHITE}
